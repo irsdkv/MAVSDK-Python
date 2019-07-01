@@ -34,8 +34,8 @@ async def run_offb_ctrl_velocity_ned():
     print("-- Arming")
     await drone.action.arm()
 
-    print("-- Setting initial setpoint")
-    await drone.offboard.set_velocity_ned(VelocityNEDYaw(0.0, 0.0, 0.0, 0.0))
+    print("-- Setting initial setpoint ActCtrl")
+    await drone.offboard.set_actuator_control(ActuatorControl(0, [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]))
 
     print("-- Starting offboard")
     try:
@@ -47,12 +47,12 @@ async def run_offb_ctrl_velocity_ned():
         return
 
     print("-- Go up 2 m/s")
-    await drone.offboard.set_velocity_ned(VelocityNEDYaw(0.0, 0.0, -2.0, 0.0))
+    await drone.offboard.set_actuator_control((ActuatorControl(0, [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0])))
     await asyncio.sleep(4)
 
     print("-- Go North 2 m/s, turn to face East")
-    await drone.offboard.set_velocity_ned(VelocityNEDYaw(2.0, 0.0, 0.0, 90.0))
-    await asyncio.sleep(4)
+    await drone.offboard.set_actuator_control((ActuatorControl(0, [0.0, 0.0, 0.0, -1.0])))
+    await asyncio.sleep(10)
 
     print("-- Go South 2 m/s, turn to face West")
     await drone.offboard.set_velocity_ned(VelocityNEDYaw(-2.0, 0.0, 0.0, 270.0))

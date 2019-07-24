@@ -34,6 +34,11 @@ class OffboardServiceStub(object):
         request_serializer=offboard__pb2.SetAttitudeRequest.SerializeToString,
         response_deserializer=offboard__pb2.SetAttitudeResponse.FromString,
         )
+    self.SetActuatorControl = channel.unary_unary(
+        '/mavsdk.rpc.offboard.OffboardService/SetActuatorControl',
+        request_serializer=offboard__pb2.SetActuatorControlRequest.SerializeToString,
+        response_deserializer=offboard__pb2.SetActuatorControlResponse.FromString,
+        )
     self.SetAttitudeRate = channel.unary_unary(
         '/mavsdk.rpc.offboard.OffboardService/SetAttitudeRate',
         request_serializer=offboard__pb2.SetAttitudeRateRequest.SerializeToString,
@@ -82,6 +87,13 @@ class OffboardServiceServicer(object):
     raise NotImplementedError('Method not implemented!')
 
   def SetAttitude(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SetActuatorControl(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -138,6 +150,11 @@ def add_OffboardServiceServicer_to_server(servicer, server):
           servicer.SetAttitude,
           request_deserializer=offboard__pb2.SetAttitudeRequest.FromString,
           response_serializer=offboard__pb2.SetAttitudeResponse.SerializeToString,
+      ),
+      'SetActuatorControl': grpc.unary_unary_rpc_method_handler(
+          servicer.SetActuatorControl,
+          request_deserializer=offboard__pb2.SetActuatorControlRequest.FromString,
+          response_serializer=offboard__pb2.SetActuatorControlResponse.SerializeToString,
       ),
       'SetAttitudeRate': grpc.unary_unary_rpc_method_handler(
           servicer.SetAttitudeRate,

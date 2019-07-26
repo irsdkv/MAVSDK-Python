@@ -134,12 +134,12 @@ class ActuatorControlGroup:
     def translate_to_rpc(self, rpcActuatorControlGroup):
         """ Translates this SDK object into its gRPC equivalent """
 
-        
-        
-            
-        rpc_elems_list = []
+
+
+
         for elem in self.controls:
-          rpc_elems_list.append(elem)
+          rpcActuatorControlGroup.controls.append(elem)
+
             
         
         

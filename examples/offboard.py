@@ -81,6 +81,7 @@ async def run_offb_ctrl_velocity_ned():
         print(f"Stopping offboard mode failed with error code: {error._result.result}")
 
 
+
 async def run_offb_ctrl_velocity_body():
     """ Does Offboard control using velocity body co-ordinates. """
 

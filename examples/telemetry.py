@@ -5,13 +5,17 @@ import asyncio
 from mavsdk import start_mavlink
 from mavsdk import connect as mavsdk_connect
 
-start_mavlink(connection_url="udp://:14540")
+start_mavlink()
 drone = mavsdk_connect(host="127.0.0.1")
 
 
 async def print_battery():
     async for battery in drone.telemetry.battery():
         print(f"Battery: {battery.remaining_percent}")
+
+async def print_euler():
+    async for euler in drone.telemetry.attitude_euler():
+        print(f"Euler: {euler}")
 
 
 async def print_gps_info():
@@ -37,6 +41,7 @@ def setup_tasks():
     asyncio.ensure_future(print_gps_info())
     asyncio.ensure_future(print_in_air())
     asyncio.ensure_future(print_position())
+    asyncio.ensure_future(print_euler())
 
 
 if __name__ == "__main__":

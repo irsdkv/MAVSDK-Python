@@ -44,6 +44,11 @@ class MissionServiceStub(object):
         request_serializer=mission__pb2.PauseMissionRequest.SerializeToString,
         response_deserializer=mission__pb2.PauseMissionResponse.FromString,
         )
+    self.ClearMission = channel.unary_unary(
+        '/mavsdk.rpc.mission.MissionService/ClearMission',
+        request_serializer=mission__pb2.ClearMissionRequest.SerializeToString,
+        response_deserializer=mission__pb2.ClearMissionResponse.FromString,
+        )
     self.SetCurrentMissionItemIndex = channel.unary_unary(
         '/mavsdk.rpc.mission.MissionService/SetCurrentMissionItemIndex',
         request_serializer=mission__pb2.SetCurrentMissionItemIndexRequest.SerializeToString,
@@ -117,6 +122,13 @@ class MissionServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def ClearMission(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def SetCurrentMissionItemIndex(self, request, context):
     # missing associated documentation comment in .proto file
     pass
@@ -184,6 +196,11 @@ def add_MissionServiceServicer_to_server(servicer, server):
           servicer.PauseMission,
           request_deserializer=mission__pb2.PauseMissionRequest.FromString,
           response_serializer=mission__pb2.PauseMissionResponse.SerializeToString,
+      ),
+      'ClearMission': grpc.unary_unary_rpc_method_handler(
+          servicer.ClearMission,
+          request_deserializer=mission__pb2.ClearMissionRequest.FromString,
+          response_serializer=mission__pb2.ClearMissionResponse.SerializeToString,
       ),
       'SetCurrentMissionItemIndex': grpc.unary_unary_rpc_method_handler(
           servicer.SetCurrentMissionItemIndex,

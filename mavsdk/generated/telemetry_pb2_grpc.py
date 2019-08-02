@@ -89,6 +89,16 @@ class TelemetryServiceStub(object):
         request_serializer=telemetry__pb2.SubscribeStatusTextRequest.SerializeToString,
         response_deserializer=telemetry__pb2.StatusTextResponse.FromString,
         )
+    self.SubscribeActuatorControlTarget = channel.unary_stream(
+        '/mavsdk.rpc.telemetry.TelemetryService/SubscribeActuatorControlTarget',
+        request_serializer=telemetry__pb2.SubscribeActuatorControlTargetRequest.SerializeToString,
+        response_deserializer=telemetry__pb2.ActuatorControlTargetResponse.FromString,
+        )
+    self.SubscribeActuatorOutputStatus = channel.unary_stream(
+        '/mavsdk.rpc.telemetry.TelemetryService/SubscribeActuatorOutputStatus',
+        request_serializer=telemetry__pb2.SubscribeActuatorOutputStatusRequest.SerializeToString,
+        response_deserializer=telemetry__pb2.ActuatorOutputStatusResponse.FromString,
+        )
 
 
 class TelemetryServiceServicer(object):
@@ -200,6 +210,20 @@ class TelemetryServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def SubscribeActuatorControlTarget(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SubscribeActuatorOutputStatus(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_TelemetryServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -277,6 +301,16 @@ def add_TelemetryServiceServicer_to_server(servicer, server):
           servicer.SubscribeStatusText,
           request_deserializer=telemetry__pb2.SubscribeStatusTextRequest.FromString,
           response_serializer=telemetry__pb2.StatusTextResponse.SerializeToString,
+      ),
+      'SubscribeActuatorControlTarget': grpc.unary_stream_rpc_method_handler(
+          servicer.SubscribeActuatorControlTarget,
+          request_deserializer=telemetry__pb2.SubscribeActuatorControlTargetRequest.FromString,
+          response_serializer=telemetry__pb2.ActuatorControlTargetResponse.SerializeToString,
+      ),
+      'SubscribeActuatorOutputStatus': grpc.unary_stream_rpc_method_handler(
+          servicer.SubscribeActuatorOutputStatus,
+          request_deserializer=telemetry__pb2.SubscribeActuatorOutputStatusRequest.FromString,
+          response_serializer=telemetry__pb2.ActuatorOutputStatusResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

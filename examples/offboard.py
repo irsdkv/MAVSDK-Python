@@ -19,12 +19,9 @@ from mavsdk import connect as mavsdk_connect
 from mavsdk import (
     Attitude,
     OffboardError,
-    PositionNEDYaw,
-    VelocityBodyYawspeed,
-    VelocityNEDYaw,
 )
 
-start_mavlink(connection_url="udp://:14540")
+start_mavlink(connection_url="serial:///dev/ttyUSB0:57600")
 drone = mavsdk_connect(host="127.0.0.1")
 
 
@@ -215,4 +212,4 @@ async def run_offb_ctrl_attitude():
 
 
 loop = asyncio.get_event_loop()
-loop.run_until_complete(run_offb_ctrl_velocity_ned())
+loop.run_until_complete(run_offb_ctrl_attitude())

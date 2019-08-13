@@ -44,10 +44,10 @@ class TelemetryServiceStub(object):
         request_serializer=telemetry__pb2.SubscribeAttitudeEulerRequest.SerializeToString,
         response_deserializer=telemetry__pb2.AttitudeEulerResponse.FromString,
         )
-    self.SubscribeAttitudeAngularSpeed = channel.unary_stream(
-        '/mavsdk.rpc.telemetry.TelemetryService/SubscribeAttitudeAngularSpeed',
-        request_serializer=telemetry__pb2.SubscribeAttitudeAngularSpeedRequest.SerializeToString,
-        response_deserializer=telemetry__pb2.AttitudeAngularSpeedResponse.FromString,
+    self.SubscribeAttitudeAngularVelocityBody = channel.unary_stream(
+        '/mavsdk.rpc.telemetry.TelemetryService/SubscribeAttitudeAngularVelocityBody',
+        request_serializer=telemetry__pb2.SubscribeAttitudeAngularVelocityBodyRequest.SerializeToString,
+        response_deserializer=telemetry__pb2.AttitudeAngularVelocityBodyResponse.FromString,
         )
     self.SubscribeCameraAttitudeQuaternion = channel.unary_stream(
         '/mavsdk.rpc.telemetry.TelemetryService/SubscribeCameraAttitudeQuaternion',
@@ -152,7 +152,7 @@ class TelemetryServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def SubscribeAttitudeAngularSpeed(self, request, context):
+  def SubscribeAttitudeAngularVelocityBody(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -269,10 +269,10 @@ def add_TelemetryServiceServicer_to_server(servicer, server):
           request_deserializer=telemetry__pb2.SubscribeAttitudeEulerRequest.FromString,
           response_serializer=telemetry__pb2.AttitudeEulerResponse.SerializeToString,
       ),
-      'SubscribeAttitudeAngularSpeed': grpc.unary_stream_rpc_method_handler(
-          servicer.SubscribeAttitudeAngularSpeed,
-          request_deserializer=telemetry__pb2.SubscribeAttitudeAngularSpeedRequest.FromString,
-          response_serializer=telemetry__pb2.AttitudeAngularSpeedResponse.SerializeToString,
+      'SubscribeAttitudeAngularVelocityBody': grpc.unary_stream_rpc_method_handler(
+          servicer.SubscribeAttitudeAngularVelocityBody,
+          request_deserializer=telemetry__pb2.SubscribeAttitudeAngularVelocityBodyRequest.FromString,
+          response_serializer=telemetry__pb2.AttitudeAngularVelocityBodyResponse.SerializeToString,
       ),
       'SubscribeCameraAttitudeQuaternion': grpc.unary_stream_rpc_method_handler(
           servicer.SubscribeCameraAttitudeQuaternion,

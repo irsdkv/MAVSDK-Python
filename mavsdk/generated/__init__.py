@@ -6,7 +6,6 @@ from .telemetry import *
 from .action import *
 from .info import *
 from .gimbal import *
-from .geofence import *
 from .calibration import *
 from .core import *
 from .mission import *

@@ -21,7 +21,8 @@ CORE_PLUGINS = [
     "Mission",
     "Param",
     "Offboard",
-    "Telemetry"
+    "Telemetry",
+    "Logging"
     ]
 
 # Check for compatibility

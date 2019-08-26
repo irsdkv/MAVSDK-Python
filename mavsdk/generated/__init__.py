@@ -5,6 +5,7 @@ from .param import *
 from .telemetry import *
 from .action import *
 from .info import *
+from .logging import *
 from .gimbal import *
 from .calibration import *
 from .core import *

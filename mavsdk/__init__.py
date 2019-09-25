@@ -19,10 +19,10 @@ CORE_PLUGINS = [
     "Gimbal",
     "Info",
     "Mission",
+    "Mocap",
     "Param",
     "Offboard",
-    "Telemetry",
-    "Logging"
+    "Telemetry"
     ]
 
 # Check for compatibility

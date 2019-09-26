@@ -5,8 +5,10 @@ from . import telemetry_pb2 as telemetry__pb2
 
 
 class TelemetryServiceStub(object):
-  # missing associated documentation comment in .proto file
-  pass
+  """
+  Allow users to get vehicle telemetry and state information
+  (e.g. battery, GPS, RC connection, flight mode etc.) and set telemetry update rates.
+  """
 
   def __init__(self, channel):
     """Constructor.
@@ -28,6 +30,11 @@ class TelemetryServiceStub(object):
         '/mavsdk.rpc.telemetry.TelemetryService/SubscribeInAir',
         request_serializer=telemetry__pb2.SubscribeInAirRequest.SerializeToString,
         response_deserializer=telemetry__pb2.InAirResponse.FromString,
+        )
+    self.SubscribeLandedState = channel.unary_stream(
+        '/mavsdk.rpc.telemetry.TelemetryService/SubscribeLandedState',
+        request_serializer=telemetry__pb2.SubscribeLandedStateRequest.SerializeToString,
+        response_deserializer=telemetry__pb2.LandedStateResponse.FromString,
         )
     self.SubscribeArmed = channel.unary_stream(
         '/mavsdk.rpc.telemetry.TelemetryService/SubscribeArmed',
@@ -104,120 +111,134 @@ class TelemetryServiceStub(object):
         request_serializer=telemetry__pb2.SubscribeActuatorOutputStatusRequest.SerializeToString,
         response_deserializer=telemetry__pb2.ActuatorOutputStatusResponse.FromString,
         )
+    self.SubscribeOdometry = channel.unary_stream(
+        '/mavsdk.rpc.telemetry.TelemetryService/SubscribeOdometry',
+        request_serializer=telemetry__pb2.SubscribeOdometryRequest.SerializeToString,
+        response_deserializer=telemetry__pb2.OdometryResponse.FromString,
+        )
 
 
 class TelemetryServiceServicer(object):
-  # missing associated documentation comment in .proto file
-  pass
+  """
+  Allow users to get vehicle telemetry and state information
+  (e.g. battery, GPS, RC connection, flight mode etc.) and set telemetry update rates.
+  """
 
   def SubscribePosition(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'position' updates.
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeHome(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'home position' updates.
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeInAir(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to in-air updates.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SubscribeLandedState(self, request, context):
+    """Subscribe to landed state updates
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeArmed(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to armed updates.
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeAttitudeQuaternion(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'attitude' updates (quaternion).
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeAttitudeEuler(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'attitude' updates (euler).
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeAttitudeAngularVelocityBody(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'attitude' updates (angular velocity)
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeCameraAttitudeQuaternion(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'camera attitude' updates (quaternion).
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeCameraAttitudeEuler(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'camera attitude' updates (euler).
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeGroundSpeedNed(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'ground speed' updates (NED).
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeGpsInfo(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'GPS info' updates.
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeBattery(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'battery' updates.
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeFlightMode(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'flight mode' updates.
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeHealth(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'health' updates.
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeRcStatus(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'RC status' updates.
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeStatusText(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Subscribe to 'status text' updates.
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -230,6 +251,13 @@ class TelemetryServiceServicer(object):
     raise NotImplementedError('Method not implemented!')
 
   def SubscribeActuatorOutputStatus(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SubscribeOdometry(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -253,6 +281,11 @@ def add_TelemetryServiceServicer_to_server(servicer, server):
           servicer.SubscribeInAir,
           request_deserializer=telemetry__pb2.SubscribeInAirRequest.FromString,
           response_serializer=telemetry__pb2.InAirResponse.SerializeToString,
+      ),
+      'SubscribeLandedState': grpc.unary_stream_rpc_method_handler(
+          servicer.SubscribeLandedState,
+          request_deserializer=telemetry__pb2.SubscribeLandedStateRequest.FromString,
+          response_serializer=telemetry__pb2.LandedStateResponse.SerializeToString,
       ),
       'SubscribeArmed': grpc.unary_stream_rpc_method_handler(
           servicer.SubscribeArmed,
@@ -328,6 +361,11 @@ def add_TelemetryServiceServicer_to_server(servicer, server):
           servicer.SubscribeActuatorOutputStatus,
           request_deserializer=telemetry__pb2.SubscribeActuatorOutputStatusRequest.FromString,
           response_serializer=telemetry__pb2.ActuatorOutputStatusResponse.SerializeToString,
+      ),
+      'SubscribeOdometry': grpc.unary_stream_rpc_method_handler(
+          servicer.SubscribeOdometry,
+          request_deserializer=telemetry__pb2.SubscribeOdometryRequest.FromString,
+          response_serializer=telemetry__pb2.OdometryResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

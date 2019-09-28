@@ -11,3 +11,5 @@ from .calibration import *
 from .core import *
 from .mission import *
 from .offboard import *
+from .telemetry import *
+from .mocap import *

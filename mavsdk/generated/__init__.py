@@ -12,3 +12,4 @@ from .calibration import *
 from .core import *
 from .mission import *
 from .offboard import *
+from .shell import *

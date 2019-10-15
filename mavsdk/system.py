@@ -19,6 +19,7 @@ class System:
         "Mocap",
         "Param",
         "Offboard",
+        "Shell",
         "Telemetry"
     ]
 
@@ -139,6 +140,12 @@ class System:
         if "mocap" not in self._plugins:
             raise RuntimeError("Mocap plugin has not been initialized! Did you run `System.connect()`?")
         return self._plugins["mocap"]
+
+    @property
+    def shell(self) -> Shell:
+        if "mocap" not in self._plugins:
+            raise RuntimeError("Shell plugin has not been initialized! Did you run `System.connect()`?")
+        return self._plugins["shell"]
 
     @staticmethod
     def _start_mavsdk_server(system_address=None):
